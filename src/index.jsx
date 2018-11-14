@@ -8,9 +8,11 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { createHistory as history } from 'history';
 
 import '../assets/stylesheets/application.scss';
-import './reducers/posts_reducer.jsx'
+import postsReducers from './reducers/posts_reducer.jsx'
 
 import PostsIndex from './containers/posts_index';
+import PostsShow from './containers/posts_show';
+import PostsNew from './containers/posts_new';
 
 const reducers = combineReducers({
   posts: postsReducers
@@ -25,6 +27,8 @@ ReactDOM.render(
       <div className="thin-container">
         <Switch>
           <Route path="/" exact component={PostsIndex} />
+          <Route path="/posts/new" exact component={PostsNew} />
+          <Route path="/posts/:id" exact component={PostsShow} />
         </Switch>
       </div>
     </Router>
